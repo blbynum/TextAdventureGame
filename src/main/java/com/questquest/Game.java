@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Game {
+public class Game extends Thread {
     private Map<Integer, Location> locations;
     private int currentLocationID;
     private Map<String, Integer> currentExits;
@@ -26,10 +26,8 @@ public class Game {
 
     }
 
-    /**
-     * Launches this instance of the game.
-     */
-    public void play() {
+    @Override
+    public void run() {
         scanner = new Scanner(System.in);
         printStartText();
 
