@@ -18,10 +18,10 @@ public class Game extends Thread {
     private Player currentPlayer;
     private Scanner scanner;
 
-    public Game(Player currentPlayer, int startingLocation) {
-        this.currentPlayer = currentPlayer;
+    public Game() {
+        this.currentPlayer = new Player(0, "Lonk", null);
         this.locations = initializeLocations();
-        this.currentLocationID = startingLocation;
+        this.currentLocationID = 0;
         this.currentExits = locations.get(currentLocationID).getExits();
 
     }
