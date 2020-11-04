@@ -30,13 +30,11 @@ public class Game extends Thread {
     public void run() {
         scanner = new Scanner(System.in);
         printStartText();
-
         boolean quit = false;
         while (!quit) {
             System.out.print("Enter a command: ");
             String command = scanner.nextLine();
             quit = parseCommand(command, getPrimaryCommand(command), getSecondaryCommand(command));
-            System.out.println("----------------------------------------------------------");
         }
     }
 
