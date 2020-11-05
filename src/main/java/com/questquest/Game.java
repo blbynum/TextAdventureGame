@@ -11,34 +11,30 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Game {
+public class Game implements Runnable {
     private Map<Integer, Location> locations;
     private int currentLocationID;
     private Map<String, Integer> currentExits;
     private Player currentPlayer;
     private Scanner scanner;
 
-    public Game(Player currentPlayer, int startingLocation) {
-        this.currentPlayer = currentPlayer;
+    public Game() {
+        this.currentPlayer = new Player(0, "Lonk", null);
         this.locations = initializeLocations();
-        this.currentLocationID = startingLocation;
+        this.currentLocationID = 0;
         this.currentExits = locations.get(currentLocationID).getExits();
 
     }
 
-    /**
-     * Launches this instance of the game.
-     */
-    public void play() {
+    @Override
+    public void run() {
         scanner = new Scanner(System.in);
         printStartText();
-
         boolean quit = false;
         while (!quit) {
             System.out.print("Enter a command: ");
             String command = scanner.nextLine();
             quit = parseCommand(command, getPrimaryCommand(command), getSecondaryCommand(command));
-            System.out.println("----------------------------------------------------------");
         }
     }
 
