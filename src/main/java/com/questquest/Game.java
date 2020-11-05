@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Game extends Thread {
+public class Game implements Runnable {
     private Map<Integer, Location> locations;
     private int currentLocationID;
     private Map<String, Integer> currentExits;
